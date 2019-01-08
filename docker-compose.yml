@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  ftpserver:
+    image: iradu/terracotta-4.3.6
+    ports:
+      - "9510:9510"
+      - "9530:9530"
+      - "9540:9530"
+    environment:
+      HOST: 10.1.1.1
+      TC_SERVER1: host1.domain.com
+      TC_SERVER2: host2.domain.com
+
+
