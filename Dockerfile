@@ -20,7 +20,7 @@ ADD config/tc.custom.log4j.properties /terracotta/.tc.custom.log4j.properties
 
 # adding the user terracotta, to not run the server as root
 RUN addgroup -S terracotta && adduser -h /terracotta -s /bin/bash -G terracotta -S -D terracotta
-RUN chown -R terracotta:terracotta /terracotta
+# RUN chown -R terracotta:terracotta /terracotta
 
 # all below commands will now be relative to this path
 WORKDIR /terracotta/server
