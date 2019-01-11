@@ -1,0 +1,13 @@
+version: '3'
+services:
+
+  terracotta:
+    image: terracotta
+    ports:
+      - "9510:9510"
+      - "9530:9530"
+      - "9540:9540"
+    environment:
+      - terracotta-net
+
+

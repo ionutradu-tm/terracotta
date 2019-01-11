@@ -20,7 +20,8 @@ ADD config/tc.custom.log4j.properties /terracotta/.tc.custom.log4j.properties
 
 # adding the user terracotta, to not run the server as root
 RUN addgroup -S terracotta && adduser -h /terracotta -s /bin/bash -G terracotta -S -D terracotta
-# RUN chown -R terracotta:terracotta /terracotta
+RUN chown -R terracotta:terracotta /terracotta
+USER terracotta
 
 # all below commands will now be relative to this path
 WORKDIR /terracotta/server
@@ -36,8 +37,6 @@ EXPOSE 9530
 ENV OFFHEAP_ENABLED "true"
 ENV OFFHEAP_MAX_SIZE "1g"
 
-USER root
-
 # before starting the terracotta server, we update the tc-config.xml configuration file
 ENTRYPOINT sed -i -r 's/OFFHEAP_ENABLED/'$OFFHEAP_ENABLED'/; s/OFFHEAP_MAX_SIZE/'$OFFHEAP_MAX_SIZE'/; s/TC_SERVER1/'$TC_SERVER1'/g; s/TC_SERVER2/'$TC_SERVER2'/g' config/tc-config*.xml \
-  && if [ \( -n $TC_SERVER1 \) -o  \( -n $TC_SERVER2 \) ]; then echo "$HOST  $TC_SERVER1" >> /etc/hosts; export HOSTNAME=$TC_SERVER1; sleep 120; bin/start-tc-server.sh -f config/tc-config-active-passive.xml -n $HOSTNAME; else bin/start-tc-server.sh -f config/tc-config-single-node.xml; fi \
+  && if [ \( -n $TC_SERVER1 \) -o  \( -n $TC_SERVER2 \) ]; then bin/start-tc-server.sh -f config/tc-config-active-passive.xml -n $HOSTNAME; else bin/start-tc-server.sh; fi \
