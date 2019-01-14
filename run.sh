@@ -2,7 +2,7 @@
 
 # before starting the terracotta server, we update the tc-config.xml configuration file
 if [[ -z $OFFHEAP_MAX_SIZE ]]; then
-   export OFFHEAP_MAX_SIZE=2g;
+   export OFFHEAP_MAX_SIZE="2g";
 fi
 
 sed -i -r 's/OFFHEAP_ENABLED/'$OFFHEAP_ENABLED'/; s/OFFHEAP_MAX_SIZE/'$OFFHEAP_MAX_SIZE'/; s/TC_SERVER1/'$TC_SERVER1'/g; s/TC_SERVER2/'$TC_SERVER2'/g' config/tc-config*.xml 
