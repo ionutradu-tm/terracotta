@@ -38,7 +38,7 @@ EXPOSE 9530
 
 # default values for offheap, that you can override when starting your container with docker run -e OFFHEAP_MAX_SIZE=512g for example
 ENV OFFHEAP_ENABLED "true"
-ENV OFFHEAP_MAX_SIZE "1g"
+#ENV OFFHEAP_MAX_SIZE "2g"
 
 USER root
 
