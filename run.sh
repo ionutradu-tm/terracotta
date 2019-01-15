@@ -17,6 +17,6 @@ if [[ -n $TC_SERVER1 ]] || [[ -n $TC_SERVER2 ]]; then
   sleep 120; 
   bin/start-tc-server.sh -f config/tc-config-active-passive.xml -n $HOSTNAME; 
 else 
-  echo "127.0.0.1 terracotta.marathon.mesos" >> /etc/hosts
+  echo "127.0.0.1 $HOSTNAME" >> /etc/hosts
   bin/start-tc-server.sh -f config/tc-config-single-node.xml; 
 fi
