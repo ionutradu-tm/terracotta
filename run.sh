@@ -5,7 +5,11 @@ if [[ -z $OFFHEAP_MAX_SIZE ]]; then
    export OFFHEAP_MAX_SIZE="2g";
 fi
 
-sed -i -r 's/OFFHEAP_ENABLED/'$OFFHEAP_ENABLED'/; s/OFFHEAP_MAX_SIZE/'$OFFHEAP_MAX_SIZE'/; s/TC_SERVER1/'$TC_SERVER1'/g; s/TC_SERVER2/'$TC_SERVER2'/g' config/tc-config*.xml 
+if [[ -z $HOSTNAME ]]; then
+   export HOSTNAME="terracotta.marathon.mesos";
+fi
+
+sed -i -r 's/OFFHEAP_ENABLED/'$OFFHEAP_ENABLED'/; s/OFFHEAP_MAX_SIZE/'$OFFHEAP_MAX_SIZE'/; s/TC_SERVER1/'$TC_SERVER1'/g; s/TC_SERVER2/'$TC_SERVER2'/; s/MY_HOST/'$HOSTNAME'/g; s/TC_SERVER2/'$TC_SERVER2'/g' config/tc-config*.xml 
 
 if [[ -n $TC_SERVER1 ]] || [[ -n $TC_SERVER2 ]]; then 
   echo "$HOST  $TC_SERVER1" >> /etc/hosts; 
