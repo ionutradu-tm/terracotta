@@ -14,7 +14,6 @@ sed -i -r 's/OFFHEAP_ENABLED/'$OFFHEAP_ENABLED'/; s/OFFHEAP_MAX_SIZE/'$OFFHEAP_M
 if [[ -n $TC_SERVER1 ]] || [[ -n $TC_SERVER2 ]]; then 
   echo "127.0.0.1  $TC_SERVER1" >> /etc/hosts;
   cat /etc/hosts
-  cat //terracotta/server/config/tc-config-active-passive.xml
   bin/start-tc-server.sh -f config/tc-config-active-passive.xml -n $HOSTNAME; 
 else 
   echo "127.0.0.1 $HOSTNAME" >> /etc/hosts
