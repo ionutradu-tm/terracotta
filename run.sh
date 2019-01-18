@@ -9,7 +9,7 @@ if [[ -z $HOSTNAME ]]; then
    export HOSTNAME="terracotta.marathon.mesos";
 fi
 
-echo "127.0.0.1  $HOSTNAME" >> /etc/hosts;
+echo -e "\n127.0.0.1  $HOSTNAME" >> /etc/hosts;
 cat /etc/hosts;
 
 sed -i -r 's/OFFHEAP_ENABLED/'$OFFHEAP_ENABLED'/; s/OFFHEAP_MAX_SIZE/'$OFFHEAP_MAX_SIZE'/; s/TC_SERVER1/'$TC_SERVER1'/g; s/TC_SERVER2/'$TC_SERVER2'/; s/MY_HOST/'$HOSTNAME'/g; s/TC_SERVER2/'$TC_SERVER2'/g' config/tc-config*.xml 
