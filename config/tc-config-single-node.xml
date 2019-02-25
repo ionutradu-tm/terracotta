@@ -20,7 +20,7 @@ Terracotta, Inc., a Software AG company
 
   <servers>
     <mirror-group>
-      <server host="terracotta.marathon.mesos" name="terracotta.marathon.mesos" >
+      <server host="MY_HOST" name="MY_HOST" >
         <tsa-port>9510</tsa-port>
         <management-port>9540</management-port>
         <tsa-group-port>9530</tsa-group-port>
