@@ -17,7 +17,39 @@ Terracotta, Inc., a Software AG company
 -->
 
 <tc:tc-config xmlns:tc="http://www.terracotta.org/config">
+<tc-properties>
+    <property name="l2.nha.dirtydb.autoDelete" value="true"/>
+    <property name="l1.cachemanager.enabled" value="true"/>
+    <property name="logging.maxLogFileSize" value="1024"/>
+    <property name="l1.max.connect.retries" value="10"/>
 
+    <property name="l1.healthcheck.l2.ping.enabled" value="true" />
+    <property name="l1.healthcheck.l2.ping.idletime" value="5000" />
+    <property name="l1.healthcheck.l2.ping.interval" value="1000" />
+    <property name="l1.healthcheck.l2.ping.probes" value="3" />
+    <property name="l1.healthcheck.l2.socketConnect" value="true" />
+    <property name="l1.healthcheck.l2.socketConnectTimeout" value="5" />
+    <property name="l1.healthcheck.l2.socketConnectCount" value="10" />
+
+    <property name="l2.healthcheck.l1.ping.enabled" value="true" />
+    <property name="l2.healthcheck.l1.ping.idletime" value="5000" />
+    <property name="l2.healthcheck.l1.ping.interval" value="1000" />
+    <property name="l2.healthcheck.l1.ping.probes" value="3" />
+    <property name="l2.healthcheck.l1.socketConnect" value="true" />
+    <property name="l2.healthcheck.l1.socketConnectTimeout" value="5" />
+    <property name="l2.healthcheck.l1.socketConnectCount" value="10" />
+
+
+    <property name="l2.healthcheck.l1.checkTime.interval" value="5000" />
+    <property name="l2.healthcheck.l1.checkTime.threshold" value="5000" />
+    <property name="l2.healthcheck.l2.checkTime.interval" value="5000" />
+    <property name="l2.healthcheck.l2.checkTime.threshold" value="5000" />
+    <property name="l1.healthcheck.l2.checkTime.interval" value="5000" />
+    <property name="l1.healthcheck.l2.checkTime.threshold" value="5000" />
+
+    <property name="l2.l1reconnect.enabled" value="false"/>
+    <property name="l2.l1reconnect.timeout.millis" value="60000"/>
+</tc-properties>
   <servers>
     <mirror-group>
       <server host="TC_SERVER1" name="TC_SERVER1" >
