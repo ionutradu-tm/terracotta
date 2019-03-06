@@ -49,6 +49,9 @@ Terracotta, Inc., a Software AG company
 
     <property name="l2.l1reconnect.enabled" value="false"/>
     <property name="l2.l1reconnect.timeout.millis" value="60000"/>
+
+    <property name="ehcache.lock.readLevel" value="NO_LOCK"/>
+    <property name="ehcache.lock.writeLevel" value="CONCURRENT"/>
 </tc-properties>
   <servers>
     <mirror-group>
