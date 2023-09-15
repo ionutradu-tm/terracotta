@@ -1,5 +1,5 @@
 # using the latest OpenJDK 8 update (see https://hub.docker.com/_/openjdk/ for more details)
-FROM openjdk:19-jdk-alpine
+FROM openjdk:21-ea-slim-bookworm
 MAINTAINER Anthony Dahanne <anthony.dahanne@softwareag.com>
 
 # add few utilities, upgrade tar
